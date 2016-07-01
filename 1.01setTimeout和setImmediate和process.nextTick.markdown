@@ -1,0 +1,30 @@
+# setTimeout和setImmediate和process.nextTick
+- 相同点是 把相关的逻辑放在同步代码之后执行 都是异步的
+- 不同点在于 nextTick当前队列的末尾，都是在下一个队列中，但是上下之间是查不多有一个时间阈值大于是37ms
+### 代码
+
+```            
+setImmediate(function(){
+    console.log('setImmediate');
+});
+
+process.nextTick(function(){
+    console.log('nextTick当前队列的末尾，
+    process.nextTick()定义的调用会创建一个新的子堆栈');
+});
+
+setTimeout(function () {
+    console.log('setTimeout,跟setImmediate都是异步的，
+    都是在下一个队列中，但是上下之间是查不多有一个时间阈值大于是37ms');
+},37);
+console.log('hello同步');
+```
+### 输出结果 
+```
+hello同步
+nextTick当前队列的末尾，process.nextTick()
+    定义的调用会创建一个新的子堆栈
+setImmediate
+setTimeout,跟setImmediate都是异步的，都是在下一个队列中，
+    但是上下之间是查不多有一个时间阈值大于是37ms
+```
