@@ -57,8 +57,9 @@ console.log(this);//{name:100}
     - process.chdir();//改变当前进程的工作目录
     - process.nextTick(callback);//在事件循环的下一次循环中调用callback回调函数
     
-    
+    #### [setTimeout和setImmediate和process.nextTick 详细](https://github.com/SeanY1987/NodeJS/blob/master/1.01setTimeout和setImmediate和process.nextTick.markdown)
     ```
+    //更详细点击上面的连接
     //当前事件列表的最底部
     process.nextTick(function () {
         console.log('开开心心');
